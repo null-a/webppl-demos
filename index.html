@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>webppl - Bayesian Linear Regression</title>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/webppl.js"></script>
+    <script src="js/plot.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <h1>Bayesian Linear Regression</h1>
+
+    <div id="plot"></div>
+    <textarea id="code" rows="30" cols="80">
+var data = [[0, 0],
+            [1, 1],
+            [2, 4],
+            [3, 6]];
+
+window.plotData(data);
+
+var model = function() {
+  var m = gaussian(0, 2);
+  var b = gaussian(0, 2);
+  var sigmaSquared = gamma(1, 1);
+
+  var f = function(x) {
+    return m * x + b;
+  };
+
+  map(
+      function(xy) {
+        factor(gaussianERP.score([f(xy[0]), sigmaSquared], xy[1]));
+      },
+      data);
+
+  sleep(window.readSleep());
+
+  return [m, b, sigmaSquared];
+};
+
+MH(model, 1000, samplerCallback);
+</textarea>
+<br>
+<input type="button" id="run" value="Run">
+    <br>
+    <label for="sleep">Sleep per-sample:</label>
+    <input type="range" id="sleep" min="0" max="250" step="2" value="0">
+    <input type="text" id="currentSleep" value="0" size="3" disabled="disabled"> (ms)
+    <hr>
+    <p>Implemented using <a href="http://webppl.org/">webppl</a>.</p>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+/* General */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+textarea {
+  font-family: Menlo, Monaco, monospace;
+  font-size: 14px;
+}
+
+/* Plotting */
+
+svg {
+  font-size: 10px;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.line.rejected {
+  stroke: #bbb;
+  stroke-width: 1px;
+}
+
+.dot {
+  fill: white;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+rect {
+  fill: #ddd;
+}
