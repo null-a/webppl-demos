@@ -39,10 +39,10 @@ $(function() {
   });
 
   $("#run").on("click", function(event) {
-    $("#run").attr("disabled", true);
     var code = $("#code").val();
     var compiled = webppl.compile(code, true);
     console.log(compiled);
+    $("#run").attr("disabled", true);
     eval.call(window, compiled)({}, function(s,val) {
       console.log(val);
       $("#run").attr("disabled", false);
