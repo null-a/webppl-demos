@@ -24,13 +24,12 @@ $(function() {
   };
 
   samplerCallback = function(val, accepted) {
+    plot.clearLines();
     if(accepted) {
-      plot.clearLines();
       plotLinearFunction(val[0], val[1], "accepted");
     } else {
       plotLinearFunction(val[0], val[1], "rejected");
     }
-
   };
 
   var sleepInput = $("#sleep")

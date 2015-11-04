@@ -43,7 +43,11 @@ var model = function() {
   return [m, b, sigmaSquared];
 };
 
-MH(model, 1000, samplerCallback);
+// Available kernels:
+// HMCKernel
+// MHKernel
+//
+MCMC(model, { kernel: HMCKernel, samples: 1000, callback: samplerCallback });
 </textarea>
 <br>
 <input type="button" id="run" value="Run">

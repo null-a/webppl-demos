@@ -28,8 +28,8 @@ svg {
 }
 
 .line.rejected {
-  stroke: #bbb;
-  stroke-width: 1px;
+  stroke: #f00;
+  stroke-width: 2px;
 }
 
 .dot {
